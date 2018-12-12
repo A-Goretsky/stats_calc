@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 /////////MEAN/////////
 void iter_mean(std::vector<double> const& data);
-void ord_mean(std::vector<double> const& data);
+double ord_mean(std::vector<double> const& data);
 
 /////////FREQ LIST/////////
 void iter_freq_list(std::vector<double> data);
@@ -20,8 +21,10 @@ double mode(std::vector<double> data);
 void min_max_range(std::vector<double> data);
 
 /////////VARIANCE/////////
-/////////STANDARD DEV/////////
+double basic_variance(std::vector<double> const& data);
 
+/////////STANDARD DEV/////////
+double basic_standard_dev(std::vector<double> const& data);
 
 /////////PRINT VECTOR/////////
 template<class T>

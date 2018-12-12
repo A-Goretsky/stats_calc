@@ -16,13 +16,12 @@ void iter_mean(std::vector<double> const& data) {
 	std::cout << "Iter Mean: " << res << "\n";
 }
 
-
-void ord_mean(std::vector<double> const& data) {
+double ord_mean(std::vector<double> const& data) {
 	double ret = 0;
 	for (int x = 0; x < data.size(); x++) {
 		ret += data[x];
 	}
-	std::cout << "Ord Mean: " << ret / (data.size()) << "\n";
+	return (ret / (data.size()));
 }
 
 
@@ -69,7 +68,7 @@ void freq_list_ordered(std::vector<double> data) {
 }
 
 /////////MIN MAX RANGE METHODS/////////
-void min_max_range(std::vector<double> data) {
+void min_max_range(std::vector<double> const& data) {
 	double max = data[0];
 	double min = data[0];
 	for (int x = 0; x < data.size(); x++) {
@@ -97,6 +96,22 @@ double median(std::vector<double> const& data) {
 /////////MODE METHODS/////////
 double mode(std::vector<double> data) {
 	return 0.0;
+}
+
+/////////VARIANCE METHODS/////////
+double basic_variance(std::vector<double> const& data) {
+	//Variance -  s^2 = Summation(x - x̅)^2 / (n - 1)
+	double mean = ord_mean(data);
+	double summation;
+	for (int x = 0; x < data.size(); x++) {
+		summation += (x - mean);
+	}
+	return summation / (data.size() - 1);
+}
+
+/////////STANDARD DEV METHODS/////////
+double basic_standard_dev(std::vector<double> const& data) {
+	return sqrt(basic_variance(data));
 }
 
 /////////PRINT VECTOR TEMPLATE/////////
