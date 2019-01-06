@@ -3,11 +3,11 @@
 #include <cmath>
 
 /////////MEAN/////////
-void iter_mean(std::vector<double> const& data);
+double iter_mean(std::vector<double> const& data);
 double ord_mean(std::vector<double> const& data);
 
 /////////FREQ LIST/////////
-void iter_freq_list(std::vector<double> data);
+std::vector<double> iter_freq_list(std::vector<double> const& data);
 std::vector<double> ord_freq_list(std::vector<double> data);
 std::vector<double> set_freq_list(std::vector<double> data);
 

@@ -6,14 +6,14 @@
 #include "basic_calc.hpp"
 
 /////////MEAN METHODS/////////
-void iter_mean(std::vector<double> const& data) {
+double iter_mean(std::vector<double> const& data) {
 	double sum;
 	std::vector<double>::const_iterator x;
 	for (x = data.begin(); x != data.end(); ++x) {
 		sum += *x;
 	}
-	double res = sum / (int) data.size();
-	std::cout << "Iter Mean: " << res << "\n";
+	return sum / (int) data.size();
+	//std::cout << "Iter Mean: " << res << "\n";
 }
 
 double ord_mean(std::vector<double> const& data) {
@@ -26,7 +26,7 @@ double ord_mean(std::vector<double> const& data) {
 
 
 /////////FREQUENCY LIST METHODS//////////
-void iter_freq_list(std::vector<double> data) {
+std::vector<double> iter_freq_list(std::vector<double> const& data) {
 	std::vector<double> elements;
 	std::vector<double> freq;
 	int ctr = 0;
@@ -49,8 +49,9 @@ void iter_freq_list(std::vector<double> data) {
 	}
 
 	std::cout << "Elements  |  Frequency\n";
-	print_vector(elements);
-	print_vector(freq);
+	return freq;
+	//print_vector(elements);
+	//print_vector(freq);
 }
 
 std::vector<double> ord_freq_list(std::vector<double> data) {
@@ -68,7 +69,25 @@ void freq_list_ordered(std::vector<double> data) {
 }
 
 /////////MIN MAX RANGE METHODS/////////
-void min_max_range(std::vector<double> const& data) {
+double min(std::vector<double> const& data) {
+	double min = data[0];
+	for (int x = 0; x < data.size(); x++) {
+		if (data[x] < min)
+			min = data[x];
+	}
+	return min;
+}
+
+double max(std::vector<double> const& data) {
+	double max = data[0];
+	for (int x = 0; x < data.size(); x++) {
+		if (data[x] > max)
+			max = data[x];
+	}
+	return max;
+}
+
+double range(std::vector<double> const& data) {
 	double max = data[0];
 	double min = data[0];
 	for (int x = 0; x < data.size(); x++) {
@@ -77,12 +96,10 @@ void min_max_range(std::vector<double> const& data) {
 		if (data[x] < min)
 			min = data[x];
 	}
-	std::cout << "Min: " << min << "\n";
-	std::cout << "Max: " << max << "\n";
-	std::cout << "Range: " << max - min << "\n";
+	return max - min;
 }
 
-/////////MEDIAN METHODS/////////
+/////////MEDIAN / QUARTILE METHODS/////////
 double median(std::vector<double> const& data) {
 	size_t size = data.size();
 	if (size % 2 == 0) {
@@ -93,18 +110,37 @@ double median(std::vector<double> const& data) {
 	}
 }
 
+double low_quartile(std::vector<double> const& data) {
+	size_t size = data.size();
+	if (size % 2 == 0) {
+		
+	}
+	else {
+		
+	}
+}
+
+double upp_quartile(std::vector<double> const& data) {
+	return 0.0;
+}
+
+double iqr(std::vector<double> const& data) {
+	return 0.0;
+}
+
 /////////MODE METHODS/////////
 double mode(std::vector<double> data) {
-	return 0.0;
+	std::vector<double> freq = iter_freq_list(data);
+	return max(freq);
 }
 
 /////////VARIANCE METHODS/////////
 double basic_variance(std::vector<double> const& data) {
-	//Variance -  s^2 = Summation(x - x̅)^2 / (n - 1)
+	//Variance -  s^2 = Summation((x - x̅)^2) / (n - 1)
 	double mean = ord_mean(data);
 	double summation;
 	for (int x = 0; x < data.size(); x++) {
-		summation += (x - mean);
+		summation += ((x - mean)*(x - mean));
 	}
 	return summation / (data.size() - 1);
 }
@@ -125,8 +161,13 @@ void print_vector(std::vector<T> const& input) {
 	std::cout << "\n";
 }
 
+/////////CHART METHODS/////////
 /*
-void freq_chart(double list[]) {
+void freq_chart(std::vector<double> data) {
 	std::cout << "Not Written Yet\n";
+}
+
+void box_whisker(std::vector<double> data) {
+
 }
 */
