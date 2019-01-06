@@ -9,6 +9,7 @@ This project is used as a little dive into exploring the in's and out's of C++. 
 
 ## What will be implemented
 
+* DOCTEST function testing
 * Chi square evaluations
 * Linear regression
 * Hypothesis testing
