@@ -1,5 +1,5 @@
 //Anton Goretsky
-//Statstical Calculator
+//Statistical Calculator
 //C++ Exploration Project, useful tool.
 //Basic statistically relevant calculation methods.
 
@@ -36,6 +36,7 @@ std::vector<double> iter_freq_list(std::vector<double> const& data) {
 		}
 	}
 	//auto will be std::vector<double>::iterator
+	
 	auto e = elements.begin();
 	while (e != elements.end()) {
 		auto x = data.begin();
@@ -48,10 +49,10 @@ std::vector<double> iter_freq_list(std::vector<double> const& data) {
 		ctr = 0;
 	}
 
-	std::cout << "Elements  |  Frequency\n";
+	std::cout << "Elements\n---------\nFrequency\n";
+	print_vector(elements);
+	print_vector(freq);
 	return freq;
-	//print_vector(elements);
-	//print_vector(freq);
 }
 
 std::vector<double> ord_freq_list(std::vector<double> data) {
